@@ -18,4 +18,8 @@ script:
   - python ./manage.py test census --keepdb
   - coverage xml
   - python-codacy-coverage -r coverage.xml
-  - cp travis_local_settings.py local_settings.py
+  - cp travis_local_settings.py local_settings1.py
+deploy:
+  provider: heroku
+  app: "examen-septiembre-migvelrom2"
+  strategy: git
