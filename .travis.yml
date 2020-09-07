@@ -6,7 +6,7 @@ addons:
 before_script:
 - psql -U postgres -c "create user migvelrom2 password 'migvelrom2'"
 - psql -U postgres -c "create database test_decide owner migvelrom2"
-- psql -U postgres -c "ALTER USER decide CREATEDB"
+- psql -U postgres -c "ALTER USER migvelrom2 CREATEDB"
 language: python
 python:
 - '3.6'
