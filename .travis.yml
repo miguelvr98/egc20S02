@@ -1,25 +1,26 @@
 dist: xenial
-
 services:
-  - postgresql
+- postgresql
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
 before_script:
-- psql -U postgres -c "create user decide password 'decide'"
-- psql -U postgres -c "create database test_decide owner decide"
+- psql -U postgres -c "create user migvelrom2 password 'migvelrom2'"
+- psql -U postgres -c "create database test_decide owner migvelrom2"
 - psql -U postgres -c "ALTER USER decide CREATEDB"
 language: python
 python:
-  - "3.6"
+- '3.6'
 install:
-  - pip install -r requirements.txt
+- pip install -r requirements.txt
 script:
-  - cd decide
-  - python ./manage.py test census --keepdb
-  - coverage xml
-  - python-codacy-coverage -r coverage.xml
-  - cp travis_local_settings.py local_settings1.py
+- cd decide
+- python ./manage.py test census --keepdb
+- coverage xml
+- python-codacy-coverage -r coverage.xml
+- cp travis_local_settings.py local_settings1.py
 deploy:
   provider: heroku
-  app: "examen-septiembre-migvelrom2"
+  app: examen-septiembre-migvelrom2
   strategy: git
+  api_key:
+    secure: JcRvAdwaL6qHqJb1fPv9SDys5mCwXboTonIZYOr/qRzROvE78Ybxq0ywf0/PRLLAYRAj9OHt2ZEIJ8ofFduD/PK2zwjuva8p0cAjDfp7IjDhCt2ETHrDKYcBP5W8VoZX813sFMNRw7bFmxdnE7ESuPpG39BfiAx6IK27Q1aNOgpC35Ptx4dB4z5B6ZkgV5OGmpuD4ITDCBEExDKrUNnKT2LAxNIOXU0t5ubJG/V3xCsTIozzYqoJZ+9dlTWWUzrjjPrL9f926OICG+7BXkGh2n5LHiAwIV1mTEYoRTIeV9264SPjLl9KSqpdCJCeYEEQGSgeWXd2DXNwkehKQfdRTLwjDykUwmLo8mh5+LmbPNcq8KmdT//4QDm18TsE9SYDnZ0HUF8KDhEvc53JtXQFPUxrLZRHPEm8fDDwOuE+zmz+X9bP5p+G0ilyp9mLcTib6R81dhikFVzLLQlVSzjo78e7wBMfxSu0iS4k/eNprEu8WTCy+wHb6VcpbjnfoySLYsGUI1RdCj3LxBFC4DJYQ4URcgQom8/w8FW2phSJ7hM86fJb2uVqe/PoRCZyEWhiYyuDDPL7Amky0wjbKG3MypvnGhpM3ram9p6segdu32i0qfeZNQcs+Al/rT0unPpmYwoRT/oPVAEZ12ZulIMpQF3O/muRNFbqdKWal+FB60c=
