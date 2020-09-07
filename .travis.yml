@@ -15,8 +15,6 @@ install:
 script:
 - cd decide
 - python ./manage.py test census --keepdb
-- coverage xml
-- python-codacy-coverage -r coverage.xml
 - cp travis_local_settings.py local_settings1.py
 deploy:
   provider: heroku
