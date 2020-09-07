@@ -84,8 +84,6 @@ MODULES = [
     'voting',
 ]
 
-BASEURL = 'http://10.5.0.1:8000'
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -123,9 +121,9 @@ WSGI_APPLICATION = 'decide.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'decide',
-        'USER': 'decide',
-        'PASSWORD': 'decide',
+        'NAME': 'migvelrom2',
+        'USER': 'migvelrom2',
+        'PASSWORD': 'migvelrom2',
         'HOST': 'localhost',
         'PORT': '5432',
     }
